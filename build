@@ -1,0 +1,1 @@
+go build gmon.go memstat.go cpustat.go

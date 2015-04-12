@@ -12,7 +12,7 @@ To build:
 
 To run
 
-./gmon <options>
+	./gmon <options>
 
     options
         1. m - memory info

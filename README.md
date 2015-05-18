@@ -5,18 +5,24 @@ Linux monitoring tool written in golang
 To build:
 
 1. Setup golang
+
 2. get termui source
+
     go get github.com/gizak/termui
-3. run build file
-    ./build
+    
+3. To build the project
+
+    make
 
 To run
 
 	./gmon <options>
 
     options
-        1. m - memory info
-        2. c - cpu info
+        m - Memory Info
+        c - CPU Info(not yet implemented)
+        d - Disk Info
+        u - System uptime
 
 To exit
 

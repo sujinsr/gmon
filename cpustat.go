@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gizak/termui"
+	ui "github.com/gizak/termui"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -118,15 +118,15 @@ func loadStat(stats *StatCPU, data []int) {
 }
 
 func cpustat() {
-	err := termui.Init()
+	err := ui.Init()
 	if err != nil {
 		panic(err)
 	}
-	defer termui.Close()
+	defer ui.Close()
 
-	termui.UseTheme("helloworld")
+	ui.UseTheme("helloworld")
 
-	bc := termui.NewBarChart()
+	bc := ui.NewBarChart()
 	bclabels := []string{"user", "nice", "sys", "idle", "iow", "irq", "s_irq", "steal", "guest"}
 	bc.Border.Label = "CPU Stat"
 	bc.X = 15
@@ -136,25 +136,25 @@ func cpustat() {
 	bc.BarWidth = 5
 	bc.BarGap = 3
 	bc.DataLabels = bclabels
-	bc.TextColor = termui.ColorGreen
-	bc.BarColor = termui.ColorRed
-	bc.NumColor = termui.ColorYellow
+	bc.TextColor = ui.ColorGreen
+	bc.BarColor = ui.ColorRed
+	bc.NumColor = ui.ColorYellow
 
 	stats := StatCPU{}
 	data := make([]int, 9)
 
-	evt := termui.EventCh()
+	evt := ui.EventCh()
 	for {
 		select {
 		case e := <-evt:
-			if e.Type == termui.EventKey && e.Ch == 'q' {
+			if e.Type == ui.EventKey && e.Ch == 'q' {
 				return
 			}
 		default:
 			getCPU(&stats)
 			loadStat(&stats, data)
 			bc.Data = data
-			termui.Render(bc)
+			ui.Render(bc)
 			time.Sleep(1 * time.Second)
 		}
 	}

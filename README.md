@@ -6,13 +6,13 @@ To build:
 
 1. Setup golang
 
-2. get termui source
+2. Get dependency packages
 
-    go get github.com/gizak/termui
+    go get
     
-3. To build the project
+3. Build the project
 
-    make
+    go build
 
 To run
 
@@ -20,13 +20,10 @@ To run
 
     options
         m - Memory Info
-        c - CPU Info(not yet implemented)
+        c - CPU Info
         d - Disk Info
         u - System uptime
 
 To exit
 
 	q
-
-# License
-GPL2, See License File
